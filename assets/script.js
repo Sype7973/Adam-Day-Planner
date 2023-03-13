@@ -1,34 +1,68 @@
-$function(officeHoursMatch); {
+var saveButtonEl = $('.saveBtn');
+
+
+
+
+
+console.log(saveButtonEl);
+
 
 var today = dayjs();
-
-
 $('#currentDay').text(today.format('MMM D, YYYY'));
+
+var twentyFourHourTime = today.format('HH');
+
+// var twentyFourHourTime = today.format('HH');
+
+// $function(officeHoursMatch); 
+
+console.log(twentyFourHourTime);
+
+
+// .children().eq(1).text()
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-var twentyFourHourTime = today.format('h');
-
-
-// $(".officeHours").each(function () {
-//   var twentyFourHourTime = parseInt($(this).attr("id").split("-")[1]);
-// });
-
-
-$(function () {
+$(function (init) {
   $(".officeHours").each(function () {
+    // [1] at the end picks which number in the index of numbers listed in the ID
     var currentOfficeHours = parseInt($(this).attr("id").split("-")[1]);
-    if (currentOfficeHours === twentyFourHourTime); 
-    $(this).removeClass('future');
-    $(this).removeClass('past');
-    $(this).addClass('present');
-    if (currentOfficeHours > twentyFourHourTime);
-    $(this).removeClass('past');
-    $(this).removeClass('present');
-    $(this).addClass('future'); 
-  });
+    var storedTextArea = localStorage.getItem("hour-" + currentOfficeHours);
+    console.log(storedTextArea);
+    console.log(currentOfficeHours);
+
+    if (twentyFourHourTime === currentOfficeHours){
+      $(this).removeClass('future');
+      $(this).removeClass('past');
+      $(this).addClass('present');
+    }
+    else if (twentyFourHourTime < currentOfficeHours) {
+      $(this).removeClass('past');
+      $(this).removeClass('present');
+      $(this).addClass('future');
+    }
+    else {
+      $(this).removeClass('future');
+      $(this).removeClass('present');
+      $(this).addClass('past')
+      
+    };
+    init();
+  })
+
+  $(saveButtonEl).click(function(event) {
+    event.preventDefault();
   
+    var buttonParentID = $(this).parent().attr('id');
+    var textAreainput = $(this).parent().children().eq(1).val() || "";
+    localStorage.setItem(buttonParentID, textAreainput);
+  });
+
+}); 
+//   
+// 
     // TODO: Add a listener for click events on the save button. This code should
     // use the id in the containing time-block as a key to save the user input in
     // local storage. HINT: What does `this` reference in the click listener
@@ -47,9 +81,7 @@ $(function () {
     // attribute of each time-block be used to do this?
     //
     // TODO: Add code to display the current date in the header of the page.
-  });
 
-};
 
 // call functions
-officeHoursMatch();
+// officeHoursMatch();
