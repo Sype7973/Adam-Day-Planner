@@ -1,22 +1,20 @@
 var saveButtonEl = $('.saveBtn');
-
-
-
-
-
+var textInputEl = $('#textareainput');
+console.log(textInputEl);
 console.log(saveButtonEl);
 
-
 var today = dayjs();
-$('#currentDay').text(today.format('MMM D, YYYY'));
+$('#currentDay').text(today.format('MMM D, YYYY, HH:mm A'));
+
 
 var twentyFourHourTime = today.format('HH');
+console.log(twentyFourHourTime);
 
 // var twentyFourHourTime = today.format('HH');
 
 // $function(officeHoursMatch); 
 
-console.log(twentyFourHourTime);
+
 
 
 // .children().eq(1).text()
@@ -29,8 +27,7 @@ $(function (init) {
   $(".officeHours").each(function () {
     // [1] at the end picks which number in the index of numbers listed in the ID
     var currentOfficeHours = parseInt($(this).attr("id").split("-")[1]);
-    var storedTextArea = localStorage.getItem("hour-" + currentOfficeHours);
-    console.log(storedTextArea);
+    
     console.log(currentOfficeHours);
 
     if (twentyFourHourTime === currentOfficeHours){
@@ -58,6 +55,7 @@ $(function (init) {
     var buttonParentID = $(this).parent().attr('id');
     var textAreainput = $(this).parent().children().eq(1).val() || "";
     localStorage.setItem(buttonParentID, textAreainput);
+ 
   });
 
 }); 
@@ -82,6 +80,3 @@ $(function (init) {
     //
     // TODO: Add code to display the current date in the header of the page.
 
-
-// call functions
-// officeHoursMatch();
