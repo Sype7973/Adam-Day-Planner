@@ -1,5 +1,6 @@
 var saveButtonEl = $('.saveBtn');
 var textInputEl = $('#textareainput');
+var clearDayButton = $('.clearBtn');
 console.log(textInputEl);
 console.log(saveButtonEl);
 
@@ -10,14 +11,6 @@ $('#currentDay').text(today.format('MMM D, YYYY, HH:mm A'));
 var twentyFourHourTime = today.format('HH');
 console.log(twentyFourHourTime);
 
-// var twentyFourHourTime = today.format('HH');
-
-// $function(officeHoursMatch); 
-
-
-
-
-// .children().eq(1).text()
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
@@ -57,7 +50,30 @@ $(function (init) {
     localStorage.setItem(buttonParentID, textAreainput);
  
   });
+  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+  $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
 
+  $(clearDayButton).click(function(event) {
+    event.preventDefault(); 
+    localStorage.clear();
+  $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+  $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+  $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+  $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+  $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+  $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+  $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+  $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+  $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+ 
+  });
 }); 
 //   
 // 
