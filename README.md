@@ -14,6 +14,8 @@
 
 To open my project; please click the below link. You will be taken to my Day Planner. You can type into each Timeslot text field; once you have filled in a task - click the associated Save button to store your information. You can also press the "Clear Day" button to clear out all tasks.
 
+https://sype7973.github.io/Adam-Day-Planner/
 
-![Day planner Screenshot](/assets/Dayplannerscreenshot.PNG)
+
+![Day planner Screenshot](/assets/img/Dayplannerscreenshot.PNG)
 
