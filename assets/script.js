@@ -3,10 +3,24 @@ var clearDayButton = $('.clearBtn');
 
 // creates variable for current time from Day.js api then sets format for header
 var today = dayjs();
-$('#currentDay').text(today.format('MMM D, YYYY, HH:mm A'));
+
+$('#currentDay').text(today.format('MMM D, YYYY, HH:mm:ss A'));
+
+
+
+// Timer function
+function updateTime() {
+  setTimeout(updateTime, 1000);
+  today = dayjs();
+  $('#currentDay').text(today.format('MMM D, YYYY, HH:mm:ss A'))
+}
+
+updateTime();
+
 
 
 var twentyFourHourTime = today.format('HH');
+
 
 console.log(twentyFourHourTime);
 
@@ -71,6 +85,8 @@ $(function (init) {
   $("#hour-17 .description").val(localStorage.getItem("hour-17"));
  
   });
+// refreshes page every minute to set timer correctly.
+
 }); 
 
 
